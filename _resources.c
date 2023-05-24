@@ -83,13 +83,13 @@ int _strcmp(char *s1, char *s2)
   */
 int _atoi(char *str)
 {
-	int sign = 1, digit_count = 0, a = 0;
+	int sec = 1, digit_count = 0, a = 0;
 	unsigned int result = 0;
 
 	while (str[a])
 	{
 		if (str[a] == '-')
-			sign = -1;
+			sec = -1;
 
 		while (str[a] >= '0' && str[a] <= '9')
 		{
@@ -104,6 +104,6 @@ int _atoi(char *str)
 		a++;
 	}
 
-	result *= sign;
+	result *= sec;
 	return (result);
 }
