@@ -34,7 +34,6 @@ char *concatenate_path(char *dir_path, char *file_name)
   *
   * Return: Path name or NULL
   */
-
 char *lookup_path(char *command_name)
 {
 	char *environ_path = NULL;
@@ -44,35 +43,40 @@ char *lookup_path(char *command_name)
 
 	if (command_name)
 	{
-	if (stat(command_name, &st) != 0 && command_name[0] != '/')
-	{
-		environ_path = custom_getenv("PATH");
-		num_delims = count_chars(environ_path, ":") + 1;
-		path_tokens = custom_tokenize(environ_path, ":", num_delims);
-
-		while (path_tokens[a])
+		if (stat(command_name, &st) != 0 && command_name[0] != '/')
 		{
-			path_tokens[a] = concatenate_path(path_tokens[a], command_name);
-			if (stat(path_tokens[a], &st) == 0)
+			environ_path = custom_getenv("PATH");
+			num_delims = count_chars(environ_path, ":") + 1;
+			path_tokens = custom_tokenize(environ_path, ":", num_delims);
+
+			while (path_tokens[a])
 			{
-				return (strdup(path_tokens[a]));
+				path_tokens[a] = concatenate_path(path_tokens[a], command_name);
+				if (stat(path_tokens[a], &st) == 0)
+				{
+					free(command_name);
+					command_name = _strdup(path_tokens[a]);
+					free(path_tokens);
+					return (command_name);
+				}
+				a++;
 			}
-			a++;
+			free(path_tokens);
 		}
+		if (stat(command_name, &st) == 0)
+			return (command_name);
 	}
-	if (stat(command_name, &st) == 0)
-		return (command_name);
-	}
+	free(command_name);
 	return (NULL);
 }
 
 /**
-  * execute_cmd - ...
-  * @command_name: ...
-  * @arguments: ...
-  *
-  * Return: ...
-  */
+ * execute_cmd - ...
+ * @command_name: ...
+ * @arguments: ...
+ *
+ * Return: ...
+ */
 
 int execute_cmd(char *command_name, char **arguments)
 {
