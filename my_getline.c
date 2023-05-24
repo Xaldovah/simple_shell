@@ -58,7 +58,6 @@ int process_buffer(char *buffer, int *start, char **lineptr, int line_length)
 		{
 			break;
 		}
-
 		if (buffer[*start] == '\n')
 		{
 			(*lineptr)[line_length] = '\n';
@@ -74,7 +73,6 @@ int process_buffer(char *buffer, int *start, char **lineptr, int line_length)
 
 		line_length++;
 	}
-
 	if (line_length + *start >= 1024)
 	{
 		int prev_size = line_length;
@@ -91,7 +89,6 @@ int process_buffer(char *buffer, int *start, char **lineptr, int line_length)
 		(*lineptr)[line_length + *start] = 0;
 		return (line_length);
 	}
-
 	return (line_length);
 }
 
@@ -138,9 +135,7 @@ int _getline(char **ptr, int desc)
 		line_length = process_buffer(buffer, &start, ptr, line_length);
 
 		if (line_length == -1)
-		{
 			return (-1);
-		}
 		else if (line_length != 0)
 		{
 			return (line_length);

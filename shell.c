@@ -42,7 +42,6 @@ int main(void)
 					perror("./shell");
 				}
 			}
-			free(tokens);
 		}
 	}
 	free(input_lne);
