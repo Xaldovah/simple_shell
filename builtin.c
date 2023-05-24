@@ -13,7 +13,7 @@ int builtin(char **tokens, char *ln)
 
 	while (listcommands[a])
 	{
-		if (strcmp(tokens[0], listcommands[a]) == 0)
+		if (_strcmp(tokens[0], listcommands[a]) == 0)
 		{
 			switch (a)
 			{
@@ -54,7 +54,7 @@ void execute_exit(char **tokens, char *ln)
 	int status = 0;
 
 	if (tokens[1] != NULL)
-		status = atoi(tokens[1]);
+		status = _atoi(tokens[1]);
 
 	free_tokens(tokens);
 	free(ln);

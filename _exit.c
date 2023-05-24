@@ -17,7 +17,7 @@ void res_handle_exit(char **res_tokens, char *res_line)
 		free(res_line);
 		exit(0);
 	}
-	res_status = atoi(res_tokens[1]);
+	res_status = _atoi(res_tokens[1]);
 
 	if (res_status != 0)
 	{

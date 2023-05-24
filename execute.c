@@ -85,18 +85,17 @@ int execute_cmd(char *command_name, char **arguments)
 
 	switch (child_pid = fork())
 	{
-	case -1:
-		perror("fork");
-		return (-1);
-	case 0:
-		execve(command_name, arguments, environ);
-		perror("execve"); /* Handle execve error */
-		exit(EXIT_FAILURE); /* Terminate child process on error */
-	default:
-		do {
-		waitpid(child_pid, &status, WUNTRACED);
-		} while (WIFEXITED(status) == 0 && WIFSIGNALED(status) == 0);
+		case -1:
+			perror("fork");
+			return (-1);
+		case 0:
+			execve(command_name, arguments, environ);
+			perror("execve"); /* Handle execve error */
+			exit(EXIT_FAILURE); /* Terminate child process on error */
+		default:
+			do {
+				waitpid(child_pid, &status, WUNTRACED);
+			} while (WIFEXITED(status) == 0 && WIFSIGNALED(status) == 0);
 	}
-
 	return (0);
 }

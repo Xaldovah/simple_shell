@@ -1,7 +1,7 @@
 #include "shell.h"
 
 /**
- * main - Entry point for the shell
+ * main - Entry point
  *
  * Return: 0.
  */
@@ -42,9 +42,9 @@ int main(void)
 					perror("./shell");
 				}
 			}
+			free(tokens);
 		}
 	}
 	free(input_lne);
-	free(tokens);
 	return (0);
 }

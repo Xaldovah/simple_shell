@@ -67,10 +67,10 @@ int _strcmp(char *s1, char *s2)
 			continue;
 		}
 		else
+		{
 			variance = s1[loc] - s2[loc];
 			break;
 		}
-
 		loc++;
 	}
 	return (variance);
