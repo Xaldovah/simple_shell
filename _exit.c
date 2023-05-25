@@ -21,7 +21,7 @@ void res_handle_exit(char **res_tokens, char *res_line)
 
 	if (res_status != 0)
 	{
-		free(res_tokens);
+		frees_tokens(res_tokens);
 		free(res_line);
 		exit(res_status);
 	}
@@ -30,8 +30,9 @@ void res_handle_exit(char **res_tokens, char *res_line)
 		_puts("exit: prohibited: ");
 		_puts(res_tokens[1]);
 		_puts("\n");
-		free(res_tokens);
-		free(res_line);
 		exit(2);
 	}
+	frees_tokens(res_tokens);
+	free(res_line);
+	exit(EXIT_SUCCESS);
 }

@@ -65,5 +65,7 @@ int _executable(info_t *paper, char *pass);
 char *_chars(char *passtr, int begin, int end);
 char *_path(info_t *paper, char *passtr, char *command);
 char *_path(info_t *, char *, char *);
+void frees_get_env(char *environ_path);
+void frees_tokens(char **tokens);
 
 #endif

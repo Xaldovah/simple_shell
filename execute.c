@@ -56,12 +56,14 @@ char *lookup_path(char *command_name)
 				{
 					free(command_name);
 					command_name = _strdup(path_tokens[a]);
-					free(path_tokens);
+					frees_get_env(environ_path);
+					frees_tokens(path_tokens);
 					return (command_name);
 				}
 				a++;
 			}
-			free(path_tokens);
+			frees_get_env(environ_path);
+			frees_tokens(path_tokens);
 		}
 		if (stat(command_name, &st) == 0)
 			return (command_name);
