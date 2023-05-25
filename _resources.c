@@ -107,3 +107,22 @@ int _atoi(char *str)
 	result *= sec;
 	return (result);
 }
+
+/**
+ * _check - checks if pinch starts with memstack
+ * @memstack: string to search
+ * @pinch: the substring to find
+ *
+ * Return: address of next char of memstack or NULL
+ */
+char *_check(const char *memstack, const char *pinch)
+{
+	while (*pinch)
+	{
+		if (*pinch++ != *memstack++)
+		{
+			return (NULL);
+		}
+	}
+	return ((char *)memstack);
+}

@@ -19,6 +19,11 @@
 #define MAX_PATH_LENGTH 256
 #define BUFFER_SIZE 1024
 
+typedef struct passinfo
+{
+	char *pass;
+} info_t;
+
 extern char **environ;
 
 /* Function prototypes */
@@ -55,5 +60,10 @@ void execute_setenv(char **tokens);
 void execute_unsetenv(char **tokens);
 void free_tokens(char **tokens);
 char *_strdup(char *s);
+char *_check(const char *memstack, const char *pinch);
+int _executable(info_t *paper, char *pass);
+char *_chars(char *passtr, int begin, int end);
+char *_path(info_t *paper, char *passtr, char *command);
+char *_path(info_t *, char *, char *);
 
 #endif
