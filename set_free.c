@@ -2,7 +2,7 @@
 
 /**
   * frees_get_env - This function is responsible to free get env
-  * @env_path: env var to frees
+  * @environ_path: env var to frees
   *
   * Return: Nothing
   */

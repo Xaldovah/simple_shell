@@ -14,11 +14,13 @@ void prt_environ(void)
 		b = 0;
 		while (environ[a][b])
 		{
-			write(STDOUT_FILENO, &environ[a][b], 1);
+			_putchar(environ[a][b]);
 			b++;
 		}
 		if (b != 0)
-			write(STDOUT_FILENO, "\n", 1);
+		{
+			_putchar('\n');
+		}
 		a++;
 	}
 }
